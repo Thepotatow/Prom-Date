@@ -534,6 +534,8 @@ label phone_call:
     sv "Hon sa ju faktiskt att vi skulle höras av senare. Senare är väl ändå samma dag?"
     # insert phone call
 
+    jump choice_2
+
 label choice_2:
     if lang == "english":
         menu:
@@ -549,33 +551,54 @@ label next_morning:
     scene bg hallway # lockers
     with fade
 
-    en "*The next morning Cassidy is in the hallway by the lockers. He’s standing by her locker with the letter in his hand when he sees Alvin approaching.*"
+    en "*The next morning Cassidy is in the hallway by the lockers. He’s standing by Bella's locker, with the letter in his hand when he sees Alvin approaching.*"
+    sv "*Nästa morgon. Alvin kommer gåendes mot honom.*"
 
     en_c "If I slide the letter into her locker she won’t have any idea who it might be from. But then there’s the risk of her not even finding it. It might slip her mind. I could ask Alvin to give it to her. He’s kind enough not to ask what it is and as the captain’s second he owes me a favor for helping him with practice."
+    sv_c "Om jag skickar in lappen direkt i hennes skåp skulle hon aldrig kunna veta vem det är ifrån. Men hon kanske också inte hittar det alls. Jag skulle kunna be Alvin ge det till henne. Han är smart nog att inte fråga vad det handlar om och han ska bli kapten så han är skyldig mig för att jag hjälper honom träna."
 
     if lang == "english":
         menu:
             "Send the letter with Alvin":
+                $ alvin_good = True
                 jump script_6a
 
             "Slide the letter in her locker":
+                $ alvin_good = False
                 jump script_6b
 
             "Give up":
+                jump give_up
+    elif lang == "svenska":
+        menu:
+            "Skicka lappen med Alvin":
+                $ alvin_good = True
+                jump script_6a
+
+            "Skicka in det i hennes skåp":
+                $ alvin_good = False
+                jump script_6b
+
+            "Ge upp":
                 jump give_up
 
 
 label script_6a:
 
     en_c "Hey, Alvin! I need a favor."
+    sv_c "Alvin! Jag behöver en tjänst!"
 
     en_a "Sure thing, boss. What do you need?"
+    sv_a "Absolut, Cass. Vad behöver du?"
 
     en_c "Give this to Bellanie Blaine. Tyler’s sister. Don’t tell her who it’s from. Don’t say anything at all. Just give it to her."
+    sv_c "Ge det här till Bellanie. Tyler’s tvillingsyster. Säg inte vem det är från. Säg ingenting alls, bara ge det till henne."
 
     en_a "You got it. I won’t say a word."
+    sv_a "Yes, boss. Jag säger inte ett ord."
 
-    en "*He slides the letter in her locker.*"
+    en "*Alvin slides the letter in her locker.*"
+    sv "*Alvin skickar in lappen i hennes skåp.*"
 
     #sound afect
 
@@ -583,6 +606,7 @@ label script_6a:
     with fade
 
     en "*Alvin runs away.*"
+    sv "*Alvin springer iväg.*"
 
     jump script_6a_5
 
@@ -591,22 +615,31 @@ label script_6a_5:
     with fade
 
     en "*Cassidy walks through the hallway and sees Bellanie talk to one of her friends.*"
+    sv "*Cassidy ser Bellanie prata med en av sina vänner i korridoren.*"
 
     en_b "I got a letter from Alvin today. He didn’t say it was from him but I think I could tell by his expression."
+    sv_b "Jag fick ett brev från Alvin idag. Han sa inte att det var från honom men jag tror det var det."
 
     en "Of course she thinks the damn letter is from Alvin."
 
     en "I shouldn’t have sent it with him. "
+    sv "Såklart tror hon att det var från Alvin..."
 
     en_s "That sounds creepy, Bell"
+    sv_s "Det där låter bara läskigt, Bell"
 
     jump script_5
 
 label script_6b:
 
     en "Cassidy walks through the hallway and sees Bellanie talk to one of her friends."
+    sv "*Cassidy ser Bellanie prata med en av sina vänner i korridoren.*"
 
     en_b "I got a letter from someone secret today. I found it in my locker"
+    sv_b "Jag fick ett hemligt brev från någon idag. Det låg i mitt skåp."
+
+    en_s "How unpleasant."
+    sv_s "Vad obehagligt."
 
     jump script_5
 
@@ -617,7 +650,9 @@ label script_5:
         jump script_5b
     
 label script_5a:
+    #subtle letter result
     en_b "He’s so sweet and cute. I like him. Be nice, Starr"
+    sv_b "Han är gullig och snäll. Jag gillar honom."
 
     en "At least she doesn’t seem to hate me. "
 
@@ -627,7 +662,9 @@ label script_5a:
     jump script_7
 
 label script_5b:
+    #romantic letter result
     en_b "No, he’s passionate and romantic."
+    sv_b "Nej, det är gulligt."
 
     scene black
     with fade
@@ -635,18 +672,23 @@ label script_5b:
     jump script_7
 
 label script_7:
-    #scene bg outside, road
+    #scene bg outside, road, friday evning
     #with fade
 
     en "The best moment of the day: my late night run. I don’t have to listen to my mom and dad and I’d choose silence over that shit any day. And today I seem to be lucky because there she is, waiting for the bus that I’m assuming will take her to Emily’s party. It doesn’t feel weird to talk to her anymore. It feels natural."
-
+    sv "Den bästa stunden på dagen: När gatan är död och allt är tyst. Jag behöver inte lyssna på mamma och pappa och jag skulle välja tystnad över den skiten vilken dag som helst. Och idag verkar det vara extra perfekt för där är hon… Hon väntar på en buss som jag antar ska ta henne till Emily’s hus. Det känns inte konstigt att gå fram och prata med henne längre. Det känns naturligt."
+    
     show bella neutral
 
     en_c "Bellanie! You’re taking the bus to Emily? I thought Tyler would drive you?"
+    sv_c "Bellanie! Ska du ta bussen till Emily? Jag trodde Tyler skulle köra dig?"
 
     en_b "No. He’s drinking tonight so he’s not driving. And he’s already there to help her with preparation. What are you doing out now?"
+    sv_b "Nej. Han ska dricka ikväll så han kör inte. Och dessutom är han redan där och hjälper henne. Vad gör du ute såhär sent?"
 
-    en_c "Taking a break from my agonizing parents, trying to escape my parents, technically running away from home because I don’t want to listen to my father beating my mother senseless. The reasons are countless but I can’t tell her all that."
+    en "Taking a break from my agonizing parents, trying to escape my parents, technically running away from home because I don’t want to listen to my father beating my mother senseless. The reasons are countless but I can’t tell her all that."
+    sv "Tar en paus från mina plågsamma föräldrar, försöker fly från mina föräldrar, tekniskt sätt flyr hemifrån för att jag inte orkar lyssna på när min pappa slår skiten ur mamma… Anledningarna är många men det kanske jag inte kan säga till henne. Vad säger man då?"
+
 
     if lang == "english":
         menu:
@@ -660,19 +702,37 @@ label script_7:
 
             "Give up":
                 jump give_up
+    
+    elif lang == "svenska":
+        menu:
+            "Ute och springer":
+                $ affection_bella += 1
+                jump late_run
+
+            "Vandrar runt och hoppas träffa dig":
+                $ affection_bella -= 1
+                jump stroll
+
+            "Ge upp":
+                jump give_up
+
 
 label late_run:
     en_c "Just a late night run. It’s too hot to run in daylight."
+    sv_c "Ute och springer bara. Det är för varmt för det när solen fortfarande är uppe"
 
     en_b "That’s fair."
+    sv_b "Det är sant."
 
     jump the_big_quesition
 
 
 label stroll:
     en_c "Just strolling. Hoping to run into you and it seems I’m lucky."
-
+    sv_c "Vandrar runt och hoppas träffa dig. Och det verkar som att jag hade tur"
+    
     en_b "Is that so? That’s very sweet, Cass"
+    sv_b "Jaså? Vad gulligt av dig."
 
     jump the_big_quesition
 
@@ -689,8 +749,21 @@ label the_big_quesition:
 
             "Give up":
                 jump give_up
+        
+    elif lang == "svenska":
+        menu:
+            "Vill du gå med mig till balen?":
+                jump maybe_prom
+
+            "Gå hem":
+                jump walk_away
+
+            "Ge upp":
+                jump give_up
 
 label maybe_prom:
+    en_c "By the way, now that I’ve got you, I’ve been meaning to ask you, Bell. Would you want to go to prom with me?"
+    sv_c "Förresten nu när jag har dig här. Finns det någon möjlighet att jag kan ta dig till balen i slutet av terminen?"
 
     if affection_bella >= 1:
         jump lets_go_to_prom
@@ -700,18 +773,20 @@ label maybe_prom:
 label lets_go_to_prom:
     #the only GOOD ending
     en_b "Prom? Yeah sure. I’d rather go with you than barely know, that would feel a lot safer.Thank you for asking me."
+    sv_b "Balen? Ja, visst. Jag går hellre med dig än med nån jag knappt känner, det skulle vara mycket säkrare. Tack."
 
     #scene bg you win
 
-    #prom ending 2
+    #prom ending 2 
 
     return
 
 label no_prom:
     #you get a bad ending
     en_b "Prom? I don’t really know you and it would be weird for me to go with my brother’s best friend. Sorry"
+    sv_b "Balen? Jag känner dig knappt och det skulle bli skumt att gå med min brors bästa vän. Ledsen."
 
-    #scene bg you get looe the game
+    #scene bg you get loose the game
 
     #prom ending 2 get rejected
 
@@ -719,15 +794,173 @@ label no_prom:
 
 label walk_away:
     en_c "Well, as much as I’d love to stay and talk, I gotta get going. But it was nice seeing you."
+    sv_c "Även om jag gärna stannar och väntar tills din buss kommer så borde jag fortsätta. Men det var kul att se dig."
 
-    en_b "Nice seeing you too"
+    en_b "Nice seeing you too."
+    sv_b "Kul att se dig också."
 
     en "I could stay there and talk to her for hours, but I fear I might actually throw up if I keep looking into her eyes. And don’t even get me started on if she’d give me one more of those damn smiles. Nope, I’d puke right there on the spot. Is this what being in love should feel like? I thought it was supposed to be nice, not gut wrenching."
+    sv "Jag skulle kunna stanna här och prata med henne i timmar, men jag tror att jag faktiskt skulle spy om jag fortsätter att titta in i hennes ögon. Och det där jävla leendet. Nej, inte en chans, min mage skulle vänt sig. Är det såhär det känns när man är kär? Jag trodde det skulle kännas bra inte som ett jävla slag i pungen."
 
-    #the story continues
+    jump script_7b_cont
 
-    jump script_7b
+label script_7b_cont:
+    #utanför Emilys hus
+    sv "Är det Emily’s hus? Hur långt har jag sprungit? Jag är verkligen förvirrad idag. Men nu när jag ändå är här så skulle det väl inte skada att gå in och hälsa. Emily fyller ju faktiskt år."
 
-label script_7b:
+    # i hennes hus så hör han bella och alvin pratta
+
+    sv "Två gånger på en dag? Jag har verkligen tur. Jag vet att det är fel men jag kan inte låta bli att lyssna på dem."
+
+    jump script_7b_pre
+
+
+label script_7b_pre:
+    if alvin_good:
+        jump script_7b_6a
+    else:
+        jump script_7b_6b
+
+
+label script_7b_6a:
+    sv "Om Alvin säger att lappen var från mig så..."
+
+    sv_b "Hej, Alvin. Tack för den där lappen."
+
+    sv_a "Ja, absolut. När som."
+
+    sv "Den lilla skiten."
+
+    sv_b "Det var verkligen fint skrivet."
+
+    sv_a "Vad bra! Vad gör du imorgon?"
+
+    sv "Han kan inte mena allvar."
+
+    sv_b "Ingenting. Har du planer?"
+
+    sv_a "Det kanske jag har. Om du är okej med att jag gör lite planer för dig?"
+
+    sv_b "Jag gillar initiativet."
+
+    sv "Jag skulle inte ha skickat det med honom..."
+
+    jump script_8
+
+label script_7b_6b:
+    sv_a "Bell! Jag trodde inte att du skulle vara här?"
+
+    sv_b "Varför inte det? Emily är min brors flickvän."
+
+    sv_a "Okej, fair enough. Har du planer imorgon?"
+
+    sv_b "Ummm…"
+
+    sv "Hon ser inte ut att gilla honom så mycket. Han borde se det från en mil bort. Gör inget dumt nu, Alvin."
+
+    sv_a "Förresten så var den där lappen från mig."
+
+    sv "Vafan sa han nu? Dumt, Alvin."
+
+    sv_b "Jaha… Ja, jag är väl ledig imorgon."
+
+    sv_a "Får jag boka upp dig?"
+
+    sv_b "Eeh. Visst. En kväll går bra."
+
+    sv "Säg inte ja då! Alvin, din blinda jävel! Ser du inte att hon uppenbarligen inte gillar dig?! Jag kan inte se på honom. Och jag behöver nåt starkt."
+
+    jump script_8
+
+label script_8:
+    # tyler konfronterar cass ang alvin
+
+    sv_t "Cass, jag trodde inte du kunde komma?"
+
+    if lang == "english":
+        menu:
+            "":
+                jump script_8_1
+
+            "":
+                jump script_8_2
+
+    elif lang == "svenska":
+        menu:
+            "Jag hade vägarna förbi":
+                jump script_8_1
+
+            "Tänkte jag kunde säga hej i alla fall":
+                jump script_8_2
+
+label script_8_1:
+    sv_c "Jag hade vägarna förbi."
+
+    jump script_8_5
+
+label script_8_2:
+    sv_c "Jag tänkte jag kunde säg hej i alla fall."
+
+    jump script_8_5
+
+label script_8_5:
+    sv_t "Vad bra. Men tro inte att jag inte har märkt..."
+
+    sv "Märkt vad? Snälla säg inte “hur du ser på min syster” - jag lovar jag ska va’ snäll."
+
+    sv_t "Du har bettet dig som ett as mot Alvin hela kvällen. Varför?"
+
+    if lang == "english":
+        menu:
+            "":
+                jump script_8a
+
+            "":
+                jump script_8b
+
+    elif lang == "svenska":
+        menu:
+            "Ljug och säg att det är lugnt":
+                jump script_8a
+
+            "Utgör Alvin till aset":
+                jump script_8b
+
+
+label script_8a:
+    sv_c "Inget. Allt är bra, jag har väl bara inte pratat med honom så mycket ikväll."
+
+    sv_t "Okej, dåså. Men sköt dig, han ser upp till dig."
+
+    sv_c "Jag vet. Lycka till."
+
+    jump script_9a
+
+
+label script_8b:
+    if alvin_good:
+        jump script_8b_6a
+    else:
+        jump script_8b_6b
+
+
+label script_8b_6a:
+    sv_c "Jag hörde honom prata med din syster. Han har tydligen skickat lappar anonymt till henne, antagligen för att han inte vill att du ska veta det. Han bjöd ut henne nyss och jag gillar inte hans blick så jag håller ett öga på honom. Det är allt."
+
+    sv_t "Det var som fan. Tack för att du är ärlig. Jag ska ha koll på honom."
+
+    jump script_9a
+
+
+label script_8b_6b:
+    sv_c "Jag hörde honom prata med din syster. Han bjöd ut henne och hon verkade inte så bekväm med honom. Du borde hålla ett öga på honom."
+
+    sv_t "Åh fan. Tack för att du säger det. Jag ska hålla honom."
+
+    jump script_9a
+
+
+label script_9a:
+    #föräldrarna
 
     return

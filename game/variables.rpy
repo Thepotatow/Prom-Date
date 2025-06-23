@@ -25,6 +25,8 @@ default phone_bella = 0
 
 default subtle_letter = True
 
+default alvin_good = True
+
 image bg courtyard = "images/courtyard.jpg"
 image bg hallway = "images/hallway.jpg"
 image bg cass_bedroom = "images/cass_bedroom.jpg"
