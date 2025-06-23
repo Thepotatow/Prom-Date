@@ -15,6 +15,8 @@ init python:
     en_s, sv_s = define_bilingual_char("Starr", "#b429ff")
     en_bb, sv_bb = define_bilingual_char("Bear Blaine", "#1e6b2a")
     en_bs, sv_bs = define_bilingual_char("Burt Salem", "#ff0b0b")
+    en_k, sv_k = define_bilingual_char("Kendall Salem", "#d46767")
+
 
 #affections
 default affection_dad = 0
@@ -29,9 +31,12 @@ default alvin_good = True
 
 image bg courtyard = "images/courtyard.jpg"
 image bg hallway = "images/hallway.jpg"
-image bg cass_bedroom = "images/cass_bedroom.jpg"
 image bg classroom = "images/classroom.jpg"
 image bg ice_rink = "images/ice_rink.jpg"
+
+image bg cass_bedroom = "images/cass_bedroom.jpg"
+image bg cass_livingroom = "images/cass_bigroom.jpg"
+
 
 image bella happy = "images/bella happy.png"
 image bella neutral = "images/bella neutral.png"
