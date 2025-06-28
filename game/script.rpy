@@ -1190,8 +1190,18 @@ label script_10_cont:
                 $ keep_distance = True
                 jump script_10a
 
+            "Håll vakt":
+                #10b
+                $ keep_distance = False
+                jump script_10b
+
     elif lang = "svenska":
         menu:
+            "Håll avstånd":
+                #10a
+                $ keep_distance = True
+                jump script_10a
+
             "Håll vakt":
                 #10b
                 $ keep_distance = False
@@ -1199,14 +1209,219 @@ label script_10_cont:
 
 
 label script_10a:
+    sv "Om jag går för nära så kanske hon tror att jag förföljer henne. Det skulle inte se bra ut för någon."
 
+    sv "Okej, nu är hon hemma och säker. Jag borde gå. Å andra sidan så såg hon inte mig bakom henne innan."
 
+    sv "Så hon inte att jag är här. Och som det ser ut nu så verkar det som att hon byter om. Kan jag verkligen lämna ett sånt här tillfälle bara sådär?"
+
+    jump script_11
 
 label script_10b:
-    #if affection_dad >= 0:
-        #$ ending_10 = True
-    #else:
-        #$ ending_9 = True
+    if affection_dad >= 0:
+        $ ending_10 = True
+    else:
+        $ ending_9 = True
+
+    sv "Om jag följer efter henne på avstånd skulle det	Se ut som att jag förföljer henne. Jag borde hålla mig nära så hon kan se mig."
+
+    scene black 
+    with fade
+
+    sv "Okej, nu är hon hemma och säker. Jag borde gå. Å andra sidan hade hon inget emot att jag följde henne hem. Och jag har inget emot det som syns genom hennes fönster."
+
+    sv "Det tog ett par timmar att gå hem precis som jag trodde. Och som det ser ut nu så verkar det som att hon byter om. Kan jag verkligen lämna ett sånt här tillfälle bara sådär?"
+
+    jump script_11
+
+
+label script_11:
+    if lang = "english":
+        menu:
+            "Stanna":
+                #11a
+                scene black
+                with fade
+                jump script_11_5
+
+            "Gå hem":
+                #11b
+                scene black
+                with fade
+                jump script_11_5
+
+    elif lang = "svenska":
+        menu:
+            "Stanna":
+                #11a
+                scene black
+                with fade
+                jump script_11_5
+
+            "Gå hem":
+                #11b
+                scene black
+                with fade
+                jump script_11_5
+
+
+label script_11_5:
+    scene bg ice_rink
+    with fade
+
+    sv_t "Jag pratade med Bellanie igår kväll. Hon har nåt creep som följer efter henne. Jag börjar bli orolig för henne. Han har tydligen försökt ringa henne också."
+
+    sv_c "Har hon inte hans nummer inlagt?"
+
+    sv_t "Nej. Varför skulle hon ha det? Hon vet inte ens vem det är."
+
+    sv_c "Hon la aldrig in mitt nummer i sin telefon. Jag kanske inte borde säg mitt namn alls när jag ringer henne. Tyler verkar inte uppskatta det."
+
+    scene black
+    with fade
+
+    jump script_12
+
+
+label script_12:
+    #belalnie i bild
+    scene bg courtyard
+    with fade
+
+    sv_b "Hej, Cassidy! Grattis till vinsten!"
+
+    sv_c "Tack. Du verkar föra med dig tur."
+
+    sv_b "Nejdå, det var din förtjänst, Cass."
+
+    sv_c "Ska Tyler köra dig hem?"
+
+    sv_b "Ja, jag ska vänta på honom här. Hurså?"
+
+    
+label script_11:
+    if lang = "english":
+        menu:
+            "Stanna":
+                #12a
+                jump script_12a
+                
+            "Gå hem":
+                #12b
+                jump script_12b
+
+    elif lang = "svenska":
+        menu:
+            "Kyss henne":
+                #12a
+                jump script_12a
+
+            "Håll henne nära":
+                #12b
+                jump script_12b
+
+label script_12a:
+    sv_c "För att… För att fuck it-"
+
+    scene black
+    with fade
+
+    scene bg courtyard
+    with fade
+
+    sv_c "Det här kanske är den enda chansen jag får. Tillfället är perfekt. Ingen kan se oss och jag behöver det. Det där jävla leendet… Bellanie blir helt stilla i mina armar och jag vet att det är rätt."
+
+    show bella scarred
+    with fade
+
+    sv_b "Jag tror jag ska gå, Tyler sa åt mig att vänta vid bilen. Men vi ses, okej..."
+
+    sv_c "Det gör vi."
+
+    scene black
+    with fade
+
+    jump ending_3
+
+
+label enging_3:
+    sv "Om jag hade vetat att hon skulle göra en sån stor grej av det så hade jag aldrig gjort det där och då."
+
+    sv "Hon gick direkt till rektorn och jag är helt säker på att det här är tillräckligt för att få mig relegerad. Jag hoppas bara det jag sa till rektorn var bra nog."
+
+    sv "*Bellanie går förbi honom och in till rektorns kontor. Han lyssnar på vad de säger.*"
+
+    sv_pj "Tack för att du kom hit, Bellanie."
+
+    sv_b "Har du pratat med Cassidy?"
+
+    sv_pj "Det har jag. Han sa att din bror Tyler var där för att köra dig hem, är det så?"
+
+    sv_b "Ja, de hade hockeymatch. Det var därför jag var där."
+
+    sv_pj "Så han sa i alla fall sanningen då. Och enligt Cassidy så hade Tyler sett er två tillsammans. Han var där hela tiden."
+
+    sv_pj "Så jag pratade med Tyler också eftersom han nu är ett vittne och Tyler sa inget om att Cassidy hade gjort några närmanden. Men du säger alltså att Tyler var där och såg det?"
+
+    sv_b "Nej, han såg inte vad som hände. Tyler hade inte kommit ut ur byggnaden än."
+
+    sv_pj "Nu hänger inte din historia ihop här, Bellanie. Du sa nyss att han var där hela tiden."
+
+    sv_b "Ja, han var i byggnaden. Han var där men han var inte precis just där då."
+
+    sv_pj "Du förstår väl att det finns tre olika historier här som gör det väldigt svårt att säga sanningen."
+
+    sv_b "Det finns inte alls tre olika historier. Du tar det ur kontext. Jag hade gått ut först och Cassidy var där och då pratade vi med varandra och sen kysste han mig och sen kom Tyler ut. Han såg det aldrig."
+
+    sv_pj "Jag förstår att du är upprörd, Bellanie. Men försök se det här från mitt perspektiv."
+
+    sv_pj "Jag vet ingenting om din historia med Cassidy och nu har jag en tjej som hävdar att hennes brors bästa vän har antastat henne och att hennes bror inte var där när det hände, efter att hon sagt att han var där."
+
+    sv_pj "Jag har en kille som säger att ingenting hände och att hans bästa vän var där och såg det hela tiden."
+
+    sv_pj "När jag sen pratar med hans bästa vän så säger han att Cassidy aldrig kom i närheten av hans syster och att det låter otroligt att hans vän skulle kyssa henne och ännu värre antasta henne."
+
+    sv_pj "Du förstår väl hur det här låter, eller hur?"
+
+    sv_b "Du tror inte på mig..."
+
+    sv_pj "Som rektor får jag inte ta sidor eller hävda egna åsikter i en sån här sak. Men det finns inget bevis och inga vittnen som säger att du har blivit antastad. Däremot har jag ett vittne som säger att du inte blivit det och det är din egen bror..."
+
+    sv_b "Så vad händer nu? Ska han bara fortsätta gå på samma lektioner som mig och fortsätta antasta mig så länge det inte finns något bevis?"
+
+    sv_pj "Som det ser ut just nu så har du lagt allvarliga anklagelser som har startat rykten på skolan om Cassidy. Med det sagt: så kan jag inte tillåta dig att nämna det igen."
+
+    sv_pj "Och om dina vänner diskriminerar Cassidy eller behandlar honom annorlunda på grund av vad du har sagt så är det på ditt samvete."
+
+    sv_b "Va? Du menar att… han är mitt ansvar nu? Att det är mitt ansvar att folk ska behandla Cassidy med respekt?"
+
+    sv_pj "Han ska behandlas precis som tidigare och ja, det är ditt ansvar. Anklagelserna är dina."
+
+    scene black
+    with fade
+
+    sv "Att jag gjorde vadå? Hon sa att jag kysste henne?..."
+
+    sv "Va? Jag- okej, jag vet inte riktigt vad hon vill ha ut av det där men jag har aldrig lagt en enda hand på Bellanie."
+
+    sv "Hennes bror var där hela tiden, han kan intyga vad jag säger. Jag gick ut med honom och jag lämnade inte hans sida en enda gång, så fråga honom..."
+
+    sv "Nej, vi sa hejdå och sen körde han hem med Bellanie, inget mer hände..."
+
+    sv "Ja, jag är säker..."
+
+    sv "Okej, kalla in Tyler, han kan intyga att han inte har sett något sånt..."
+
+    sv "Ja, jag kan ringa hit honom nu… Tack… Ja, jag väntar utanför."
+    
+    #win the game ending 3
+
+    return
+
+
+label script_12b:
+
+    
 
 
 

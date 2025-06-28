@@ -16,6 +16,8 @@ init python:
     en_bb, sv_bb = define_bilingual_char("Bear Blaine", "#1e6b2a")
     en_bs, sv_bs = define_bilingual_char("Burt Salem", "#ff0b0b")
     en_k, sv_k = define_bilingual_char("Kendall Salem", "#d46767")
+    en_pj, sv_pj = define_bilingual_char("P. Johnsson", "#967eff")
+
 
 
 #affections
