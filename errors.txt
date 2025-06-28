@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1129: is not terminated with a newline. (Check strings and parenthesis.)
-(Perhaps you left out a " at the end of the first line.)
-                "SLÅ TILLBAKA"":
+File "game/script.rpy", line 1132: Line is indented, but the preceding with statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    if lang == "english":
+    ^
+
+File "game/script.rpy", line 1142: expected statement.
+    elif lang == "svenska":
+              ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Mon Jun 23 17:03:38 2025
+Sat Jun 28 13:53:07 2025

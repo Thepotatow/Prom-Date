@@ -1,4 +1,4 @@
-﻿default lang = "svenska"
+default lang = "svenska"
 define config.has_autosave = True
 # use : $ renpy.force_autosave()
 
@@ -13,7 +13,7 @@ init python:
 
 default inventory = []
 # When adding an item:
-# $ inventory.append(Item("Easter Egg 1", "egg1_icon.png", "egg1_detail.png", "A shiny chocolate egg with a secret."))           
+# $ inventory.append(Item("name", "icon.png", "detail.png", "description"))           
 
 
 transform right_char:
@@ -159,7 +159,7 @@ label tyler_intro:
     sv_t "Cass! Du är sen!"
 
     en_c "You’re pushing my schedule."
-    en_c "Du pressar mitt schema."
+    sv_c "Du pressar mitt schema."
 
     en_t "I’m teaching Alvin. He’s taking over as captain when I’m gone. We could use your help."
     sv_t "Jag lär faktiskt Alvin hur man är kapten så han kan ta över sen när jag är borta. Du kan väl hjälpa till?"
@@ -182,8 +182,6 @@ label tyler_intro:
 
 label exam_late:
     #1B
-    scene bg classroom
-    with fade
 
     #school bell sound
 
@@ -317,8 +315,8 @@ label script_3a:
     sv "Jag måste se till att Bellanie säger ja innan jag frågar henne om balen."
     sv "Så jag borde hålla mig på hennes goda sida och med tanke på att jag typ aldrig har pratat med henne så är väl det en bra början. Och på tal om… Här är min chans."
 
-    en "*Bellanie is spotted futher down the hallway.*"
-    sv "*Både Bell och valen dyker upp samtidigt.*" #??? valen
+    #en "*Bellanie is spotted futher down the hallway.*"
+    #sv "*Både Bell och valen dyker upp samtidigt.*" #??? valen
 
     show bella neutral
 
@@ -1118,6 +1116,7 @@ label script_9a_cont:
 
 
 label game_over_12:
+    #ending 12 bad ending
     sv "*dad gives you a punch*"
 
     return
@@ -1127,6 +1126,87 @@ label script_10:
     with fade
 
     #her phone nr is now on the wall
+
+    if lang == "english":
+        menu:
+            "555-0159":
+                jump phone_call2
+
+            "Go to bed":
+                scene black
+                with fade
+                jump script_10_cont
+
+    elif lang == "svenska":
+        menu:
+            "555-0159":
+                jump phone_call2
+
+            "Sov":
+                scene black
+                with fade
+                jump script_10_cont
+
+label phone_call2:
+
+    # insert phone call nr2 or 1 depending if you had the first phone call
+
+    jump choice_3
+
+label choice_3:
+    if lang == "english":
+        menu:
+            "Go to bed":
+                scene black
+                with fade
+                jump script_10_cont
+
+    elif lang == "svenska":
+        menu:
+            "Sov":
+                scene black
+                with fade
+                jump script_10_cont
+
+label script_10_cont:
+    scene bg courtyard
+    with fade
+
+    #after a lesson
+
+    en "*Cassidy walks onto the courtyard, after his lecture.*"
+    sv "*Cassidy går ut på school gården efter sin föreläsning.*"
+
+    sv "Tyler är inte på parkeringen. Han brukar alltid vänta här på Bellanie men nu är hon ensam. Med tanke på hur mycket vi råkar springa in i varandra numera så känns det nästan som ödet."
+
+    sv "Vilket jag inte har något emot. Det ser ut som om hon redan är på väg hem men det skulle ta henne flera timmar att gå hela vägen hem härifrån."
+
+    sv "Det är mörkt innan hon hinner hem. Tyler skulle inte vilja att hon gick hem ensam. Jag borde följa henne hem så att hon är säker."
+
+    if lang = "english":
+        menu:
+            "Håll avstånd":
+                #10a
+                $ keep_distance = True
+                jump script_10a
+
+    elif lang = "svenska":
+        menu:
+            "Håll vakt":
+                #10b
+                $ keep_distance = False
+                jump script_10b
+
+
+label script_10a:
+
+
+
+label script_10b:
+    #if affection_dad >= 0:
+        #$ ending_10 = True
+    #else:
+        #$ ending_9 = True
 
 
 

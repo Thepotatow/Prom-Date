@@ -25,9 +25,17 @@ default affection_bear = 0
 
 default phone_bella = 0
 
+#bulleons
+
 default subtle_letter = True
 
 default alvin_good = True
+
+default keep_distance = True
+
+default ending_10 = False
+
+default ending_9 = False
 
 image bg courtyard = "images/courtyard.jpg"
 image bg hallway = "images/hallway.jpg"
