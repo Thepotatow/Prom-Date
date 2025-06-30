@@ -1298,8 +1298,6 @@ label script_12:
 
     sv_b "Ja, jag ska vänta på honom här. Hurså?"
 
-    
-label script_11:
     if lang = "english":
         menu:
             "Stanna":
@@ -1420,8 +1418,52 @@ label enging_3:
 
 
 label script_12b:
+    if alvin_good == True:
+        jump script_12b_6a
+    else:
+        jump script_12b_6b
 
-    
+label script_12b_6a:
+    sv_c "Jag ville bara veta hur mycket tid jag har ensam med dig."
+
+    sv_b "Varför vill du va ensam med mig?… du behöver inte stå så nära och kan du snälla ta bort din hand från min rygg."
+
+    sv_c "Litar du inte på mig?"
+
+    sv_b "Det är inte det att jag inte litar på dig men det känns lite konstigt. Du är min brors kompis och jag känner dig knappt så..."
+
+    sv_c "Titta på mig. Oroa dig inte. Jag skulle aldrig skada dig."
+
+    sv_b "Det tror jag inte att du skulle. Men det betyder inte att jag vill att du rör vid mig så snälla, släpp mig."
+
+    #heartbeat sound loop starts
+
+    sv_b "Cassidy… jag säger till Tyler. Jag kommer berätta för honom om du inte släpper mig nu."
+
+    #Cut scene.
+    #game over ending 4
+
+
+label script_12b_6b:
+
+    sv_c "Jag ville bara veta hur mycket tid jag har ensam med dig."
+
+    sv_b "Varför vill du va ensam med mig? … du behöver inte stå så nära."
+
+    sv_c "Litar du inte på mig?"
+
+    sv_b "Det är inte det att jag inte litar på dig men det känns lite konstigt. Du är min brors kompis och jag känner dig knappt så…"
+
+    sv_c "Nej, okej, jag förstår. Det är lugnt."
+
+    sv "Helvete, det sista jag vill är att skrämma henne. Jag vill att hon ska lita på mig. Jag behöver att hon säger ja till balen. Jag måste hålla mitt löfte till Tyler. Det var kanske för tidigt..."
+
+    scene black
+    with fade
+
+    jump script_13a
+
+label script_13a:
 
 
 
