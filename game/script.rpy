@@ -813,6 +813,7 @@ label no_prom:
     return
 
 label walk_away:
+    #7 CONT
     en_c "Well, as much as I’d love to stay and talk, I gotta get going. But it was nice seeing you."
     sv_c "Även om jag gärna stannar och väntar tills din buss kommer så borde jag fortsätta. Men det var kul att se dig."
 
@@ -825,6 +826,12 @@ label walk_away:
     en "And don’t even get me started on if she’d give me one more of those damn smiles. Nope, I’d puke right there on the spot. Is this what being in love should feel like?"
     en "I thought it was supposed to be nice, not gut wrenching."
     sv "Och det där jävla leendet. Nej, inte en chans, min mage skulle vänt sig. Är det såhär det känns när man är kär? Jag trodde det skulle kännas bra inte som ett jävla slag i pungen."
+
+    if affection_bella <= 1:
+        if lang == "sv":
+            "Dessutom verkar hon inte vilja bli störd just nu. Om jag ska vara på hennes goda sida får jag passa mig."
+        elif lang == "en":
+            "...."
 
     jump script_7b_cont
 
@@ -945,9 +952,11 @@ label script_8_5:
     elif lang == "svenska":
         menu:
             "Ljug och säg att det är lugnt":
+                $ tyler_lie = True
                 jump script_8a
 
             "Utgör Alvin till aset":
+                $ tyler_lie = False
                 jump script_8b
 
 
@@ -1104,12 +1113,15 @@ label script_9a_cont:
     if lang == "english":
         menu:
             "PUNCH BACK":
-                jump mamma_rätt
-
+                #emil i lönebärja
+                scene black
+                with fade
+                jump script_10
 
     elif lang == "svenska":
         menu:
             "SLÅ TILLBAKA":
+                #emil i lönebärja
                 scene black
                 with fade
                 jump script_10
@@ -1120,6 +1132,7 @@ label game_over_12:
     sv "*dad gives you a punch*"
 
     return
+
 
 label script_10:
     scene bg cass_bedroom
@@ -1310,11 +1323,11 @@ label script_12:
 
     elif lang = "svenska":
         menu:
-            "Kyss henne":
+            "Ta chansen":
                 #12a
                 jump script_12a
 
-            "Håll henne nära":
+            "Gå närmre":
                 #12b
                 jump script_12b
 
@@ -1408,8 +1421,6 @@ label enging_3:
 
     sv "Ja, jag är säker..."
 
-    sv "Okej, kalla in Tyler, han kan intyga att han inte har sett något sånt..."
-
     sv "Ja, jag kan ringa hit honom nu… Tack… Ja, jag väntar utanför."
     
     #win the game ending 3
@@ -1418,12 +1429,13 @@ label enging_3:
 
 
 label script_12b:
-    if alvin_good == True:
-        jump script_12b_6a
+    if tyler_lie: # ljuger för tyler
+        jump script_12b_8a
     else:
-        jump script_12b_6b
+        jump script_12b_8b
 
-label script_12b_6a:
+
+label script_12b_8a:
     sv_c "Jag ville bara veta hur mycket tid jag har ensam med dig."
 
     sv_b "Varför vill du va ensam med mig?… du behöver inte stå så nära och kan du snälla ta bort din hand från min rygg."
@@ -1444,7 +1456,7 @@ label script_12b_6a:
     #game over ending 4
 
 
-label script_12b_6b:
+label script_12b_8b:
 
     sv_c "Jag ville bara veta hur mycket tid jag har ensam med dig."
 
