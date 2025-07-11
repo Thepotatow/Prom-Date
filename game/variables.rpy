@@ -1,22 +1,18 @@
 #characters
 init python:
-    def define_bilingual_char(name, color):
-        return (
-            Character(name, color=color, condition='lang == "english"'),
-            Character(u"{}".format(name), color=color, condition='lang == "svenska"')
-        )
+    def define_character(name, color):
+        return Character(name, color=color)
 
-    en, sv = Character(None, condition='lang == "english"'), Character(None, condition='lang == "svenska"')
-
-    en_c, sv_c = define_bilingual_char("Cass", "#642929")
-    en_a, sv_a = define_bilingual_char("Alvin", "#0d37a0")
-    en_t, sv_t = define_bilingual_char("Tyler", "#0da037")
-    en_b, sv_b = define_bilingual_char("Bella", "#da19ec")
-    en_s, sv_s = define_bilingual_char("Starr", "#b429ff")
-    en_bb, sv_bb = define_bilingual_char("Bear Blaine", "#1e6b2a")
-    en_bs, sv_bs = define_bilingual_char("Burt Salem", "#ff0b0b")
-    en_k, sv_k = define_bilingual_char("Kendall Salem", "#d46767")
-    en_pj, sv_pj = define_bilingual_char("P. Johnsson", "#967eff")
+    sv = define_character(none)
+    c = define_character("Cass", "#642929")
+    a = define_character("Alvin", "#0d37a0")
+    t = define_character("Tyler", "#0da037")
+    b = define_character("Bella", "#da19ec")
+    s = define_character("Starr", "#b429ff")
+    bb = define_character("Bear Blaine", "#1e6b2a")
+    bs = define_character("Burt Salem", "#ff0b0b")
+    k = define_character("Kendall Salem", "#d46767")
+    pj = define_character("P. Johnsson", "#967eff")
 
 
 
